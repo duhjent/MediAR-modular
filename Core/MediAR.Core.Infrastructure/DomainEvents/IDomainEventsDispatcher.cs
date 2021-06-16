@@ -2,7 +2,7 @@
 
 namespace MediAR.Core.Infrastructure.DomainEvents
 {
-    interface IDomainEventsDispatcher
+    public interface IDomainEventsDispatcher
     {
         Task DispatchEventAsync();
     }
