@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediAR.Core.Application", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediAR.Core.Infrastructure", "Core\MediAR.Core.Infrastructure\MediAR.Core.Infrastructure.csproj", "{3195E11E-F882-4581-B0D7-3B36728DADC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediAR.Core.EventBus", "Core\MediAR.Core.EventBus\MediAR.Core.EventBus.csproj", "{B6B01087-EE44-4E84-B7F4-E7885B5B542E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{3195E11E-F882-4581-B0D7-3B36728DADC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3195E11E-F882-4581-B0D7-3B36728DADC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3195E11E-F882-4581-B0D7-3B36728DADC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6B01087-EE44-4E84-B7F4-E7885B5B542E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6B01087-EE44-4E84-B7F4-E7885B5B542E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6B01087-EE44-4E84-B7F4-E7885B5B542E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6B01087-EE44-4E84-B7F4-E7885B5B542E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +43,7 @@ Global
 		{4D837206-5022-421E-B055-540CD40732ED} = {EE78DDE0-96C0-4DC4-A54D-E25F77383B28}
 		{0216E2A5-AD63-4BF4-ACCF-406437CC862E} = {EE78DDE0-96C0-4DC4-A54D-E25F77383B28}
 		{3195E11E-F882-4581-B0D7-3B36728DADC5} = {EE78DDE0-96C0-4DC4-A54D-E25F77383B28}
+		{B6B01087-EE44-4E84-B7F4-E7885B5B542E} = {EE78DDE0-96C0-4DC4-A54D-E25F77383B28}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3276A8A1-E4D7-4A02-908C-8B55D044F5DD}
