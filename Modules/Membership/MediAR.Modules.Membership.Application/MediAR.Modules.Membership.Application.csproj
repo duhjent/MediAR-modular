@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Users" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Core\MediAR.Core.Application\MediAR.Core.Application.csproj" />
+      <ProjectReference Include="..\MediAR.Modules.Membership.Domain\MediAR.Modules.Membership.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
