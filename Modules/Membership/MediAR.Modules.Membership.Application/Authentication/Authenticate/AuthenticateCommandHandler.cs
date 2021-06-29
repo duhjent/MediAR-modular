@@ -12,11 +12,13 @@ namespace MediAR.Modules.Membership.Application.Authentication.Authenticate
     {
         private readonly ISqlConnectionFactory _connectionFactory;
         private readonly IPasswordHasher _passwordHasher;
+        private readonly ITokenProvider _tokenProvider;
 
-        public AuthenticateCommandHandler(ISqlConnectionFactory connectionFactory, IPasswordHasher passwordHasher)
+        public AuthenticateCommandHandler(ISqlConnectionFactory connectionFactory, IPasswordHasher passwordHasher, ITokenProvider tokenProvider)
         {
             _connectionFactory = connectionFactory;
             _passwordHasher = passwordHasher;
+            _tokenProvider = tokenProvider;
         }
         
         public async Task<AuthenticationResult> Handle(AuthenticateCommand request, CancellationToken cancellationToken)
@@ -28,15 +30,17 @@ namespace MediAR.Modules.Membership.Application.Authentication.Authenticate
 
             if (user == null)
             {
-                return new AuthenticationResult("User is not found");
+                return AuthenticationResult.Failed("User is not found");
             }
 
             if (!_passwordHasher.VerifyEncoded(user.PasswordHash, request.Password))
             {
-                return new AuthenticationResult("Incorrect password");
+                return AuthenticationResult.Failed("Incorrect password");
             }
 
-            return new AuthenticationResult(user);
+            var token = _tokenProvider.GenerateToken(user);
+
+            return AuthenticationResult.Successful(token);
         }
     }
 }

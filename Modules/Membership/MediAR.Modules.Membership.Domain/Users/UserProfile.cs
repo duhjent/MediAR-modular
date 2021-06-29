@@ -7,8 +7,6 @@ namespace MediAR.Modules.Membership.Domain.Users
     {
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
         // comment out for now, need to think about module segregation
         // public IList<UserCourse> Courses { get; set; }
         public int GroupId { get; set; }

@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediAR.Modules.Membership.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediAR.Modules.Membership.Application", "Modules\Membership\MediAR.Modules.Membership.Application\MediAR.Modules.Membership.Application.csproj", "{6795EC02-02ED-4241-A376-7EE826C9C380}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediAR.ModulesMembership.Infrastructure", "Modules\Membership\MediAR.ModulesMembership.Infrastructure\MediAR.ModulesMembership.Infrastructure.csproj", "{31128B57-2952-4D2B-A1D4-9BD2E28F5B0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{6795EC02-02ED-4241-A376-7EE826C9C380}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6795EC02-02ED-4241-A376-7EE826C9C380}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6795EC02-02ED-4241-A376-7EE826C9C380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31128B57-2952-4D2B-A1D4-9BD2E28F5B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31128B57-2952-4D2B-A1D4-9BD2E28F5B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31128B57-2952-4D2B-A1D4-9BD2E28F5B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31128B57-2952-4D2B-A1D4-9BD2E28F5B0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{E0448AAE-AB5C-4AE4-8C75-3D339A3155B5} = {E3C6E71F-F5DC-4943-8CD1-59810FF74DE3}
 		{882EB1CC-ED4D-4509-95E9-D8995393E33E} = {E0448AAE-AB5C-4AE4-8C75-3D339A3155B5}
 		{6795EC02-02ED-4241-A376-7EE826C9C380} = {E0448AAE-AB5C-4AE4-8C75-3D339A3155B5}
+		{31128B57-2952-4D2B-A1D4-9BD2E28F5B0E} = {E0448AAE-AB5C-4AE4-8C75-3D339A3155B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3276A8A1-E4D7-4A02-908C-8B55D044F5DD}

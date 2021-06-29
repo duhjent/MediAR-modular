@@ -4,22 +4,31 @@ namespace MediAR.Modules.Membership.Application.Authentication.Authenticate
 {
     public class AuthenticationResult
     {
-        public AuthenticationResult(string error)
-        {
-            IsSuccessful = false;
-            Error = error;
-        }
 
-        public AuthenticationResult(ApplicationUser user)
+        private AuthenticationResult() { }
+
+        public static AuthenticationResult Failed(string error)
         {
-            IsSuccessful = true;
-            User = user;
+            return new AuthenticationResult
+            {
+                IsSuccessful = false,
+                Error = error
+            };
         }
         
-        public bool IsSuccessful { get; }
+        public static AuthenticationResult Successful(string token)
+        {
+            return new AuthenticationResult
+            {
+                IsSuccessful = true,
+                Token = token
+            };
+        }
 
-        public string Error { get; }
+        public bool IsSuccessful { get; private set; }
 
-        public ApplicationUser User { get; }
+        public string Error { get; private set; }
+
+        public string Token { get; private set; }
     }
 }

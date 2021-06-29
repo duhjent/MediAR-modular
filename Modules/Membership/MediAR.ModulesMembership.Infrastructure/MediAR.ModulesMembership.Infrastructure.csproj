@@ -5,12 +5,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Core\MediAR.Core.Application\MediAR.Core.Application.csproj" />
       <ProjectReference Include="..\MediAR.Modules.Membership.Domain\MediAR.Modules.Membership.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Dapper" Version="2.0.90" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.16" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.16" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
     </ItemGroup>
 
 </Project>
