@@ -15,7 +15,7 @@ namespace MediAR.Modules.Membership.Domain.Users.Rules
         public string Message => "Username has to be unique";
         public bool IsBroken()
         {
-            var usersWithLogin = _counter.CountUsersWithUserName(_userName);
+            var usersWithLogin = await _counter.CountUsersWithUserName(_userName);
             return usersWithLogin > 0;
         }
     }

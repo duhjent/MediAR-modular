@@ -9,7 +9,7 @@ using MediAR.Modules.Membership.Domain.Users;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace MediAR.ModulesMembership.Infrastructure.Domain.Authentication
+namespace MediAR.Modules.Membership.Infrastructure.Domain.Authentication
 {
     public class AuthTokenProvider: ITokenProvider
     {

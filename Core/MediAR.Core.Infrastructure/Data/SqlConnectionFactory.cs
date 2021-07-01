@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MediAR.Core.Infrastructure.Data
 {
-    class SqlConnectionFactory : ISqlConnectionFactory, IDisposable
+    public class SqlConnectionFactory : ISqlConnectionFactory, IDisposable
     {
         private readonly string _connectionString;
         private IDbConnection _connection;

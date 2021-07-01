@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediAR.Modules.Membership.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediAR.Modules.Membership.Application", "Modules\Membership\MediAR.Modules.Membership.Application\MediAR.Modules.Membership.Application.csproj", "{6795EC02-02ED-4241-A376-7EE826C9C380}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediAR.ModulesMembership.Infrastructure", "Modules\Membership\MediAR.ModulesMembership.Infrastructure\MediAR.ModulesMembership.Infrastructure.csproj", "{31128B57-2952-4D2B-A1D4-9BD2E28F5B0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediAR.Modules.Membership.Infrastructure", "Modules\Membership\MediAR.Modules.Membership.Infrastructure\MediAR.Modules.Membership.Infrastructure.csproj", "{31128B57-2952-4D2B-A1D4-9BD2E28F5B0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

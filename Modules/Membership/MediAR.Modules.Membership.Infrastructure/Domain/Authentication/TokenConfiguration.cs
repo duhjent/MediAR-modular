@@ -1,4 +1,4 @@
-namespace MediAR.ModulesMembership.Infrastructure.Domain.Authentication
+namespace MediAR.Modules.Membership.Infrastructure.Domain.Authentication
 {
     public class TokenConfiguration
     {

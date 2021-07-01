@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using MediAR.Modules.Membership.Domain.Users;
 
-namespace MediAR.ModulesMembership.Infrastructure.Domain.Users
+namespace MediAR.Modules.Membership.Infrastructure.Domain.Users
 {
     public class UserRepository : IUserRepository
     {
