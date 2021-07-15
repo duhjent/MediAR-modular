@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediAR.Modules.Membership.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediAR.Core.Infrastructure", "Core\MediAR.Core.Infrastructure\MediAR.Core.Infrastructure.csproj", "{469EF16C-8B2B-4131-8907-3D82FC43167F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MainApi", "MainApi", "{D358EE45-FEFC-40B3-A22D-827979EEA6F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediAR.MainApi", "MainApi\MediAR.MainApi\MediAR.MainApi.csproj", "{6E4BB7BE-123B-4351-A194-E5C75F9FE32B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,10 @@ Global
 		{469EF16C-8B2B-4131-8907-3D82FC43167F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{469EF16C-8B2B-4131-8907-3D82FC43167F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{469EF16C-8B2B-4131-8907-3D82FC43167F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E4BB7BE-123B-4351-A194-E5C75F9FE32B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E4BB7BE-123B-4351-A194-E5C75F9FE32B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E4BB7BE-123B-4351-A194-E5C75F9FE32B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E4BB7BE-123B-4351-A194-E5C75F9FE32B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +57,7 @@ Global
 		{1B3D9372-E517-4D95-BC8F-84F0B8CF9A12} = {EE78DDE0-96C0-4DC4-A54D-E25F77383B28}
 		{0F9B5BE4-C269-4E41-ACBA-AF91A3159642} = {E0448AAE-AB5C-4AE4-8C75-3D339A3155B5}
 		{469EF16C-8B2B-4131-8907-3D82FC43167F} = {EE78DDE0-96C0-4DC4-A54D-E25F77383B28}
+		{6E4BB7BE-123B-4351-A194-E5C75F9FE32B} = {D358EE45-FEFC-40B3-A22D-827979EEA6F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3276A8A1-E4D7-4A02-908C-8B55D044F5DD}
