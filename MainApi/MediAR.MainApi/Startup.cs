@@ -1,6 +1,8 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using MediAR.Core.Infrastructure;
 using MediAR.Core.Infrastructure.Api;
+using MediAR.Core.Infrastructure.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,12 +33,14 @@ namespace MediAR.MainApi
         
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            // builder.RegisterModule(new MyApplicationModule());
+            builder.RegisterModule(new InfrastructureModule());
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+            AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+
+            app.UseMiddleware<ErrorHandlerMiddleware>();
             
             if (env.IsDevelopment())
             {

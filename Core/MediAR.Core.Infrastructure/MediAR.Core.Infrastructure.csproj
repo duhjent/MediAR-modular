@@ -13,4 +13,8 @@
       <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\MediAR.Core.Contracts\MediAR.Core.Contracts.csproj" />
+    </ItemGroup>
+
 </Project>
