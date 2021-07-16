@@ -8,6 +8,7 @@ namespace MediAR.Modules.Membership.Core.DAL.Configurations
     {
         public void Configure(EntityTypeBuilder<ApplicationUserRole> builder)
         {
+            builder.HasKey(aur => new {aur.RoleId, aur.ApplicationUserId});
             builder.HasOne(aur => aur.Role)
                 .WithMany(r => r.ApplicationUsers);
             builder.HasOne(aur => aur.ApplicationUser)

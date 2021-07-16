@@ -14,7 +14,7 @@ namespace MediAR.Modules.Membership.Api
 
             builder.RegisterType<MembershipDbContext>()
                 .WithParameter("options",
-                    new DbContextOptionsBuilder<MembershipDbContext>().UseSqlServer(sqlConfig.ConnectionString));
+                    new DbContextOptionsBuilder<MembershipDbContext>().UseSqlServer(sqlConfig.ConnectionString).Options);
         }
     }
 }

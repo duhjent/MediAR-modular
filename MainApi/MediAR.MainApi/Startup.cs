@@ -34,10 +34,6 @@ namespace MediAR.MainApi
             {
                 setupAction.FeatureProviders.Add(new InternalControllerFeatureProvider());
             });
-
-            var options = Configuration.GetValue<SqlServerConfig>("sqlConfig");
-
-            services.AddDbContext<MembershipDbContext>(x => x.UseSqlServer(options.ConnectionString));
         }
         
         public void ConfigureContainer(ContainerBuilder builder)

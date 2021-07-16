@@ -9,7 +9,10 @@ namespace MediAR.Core.Infrastructure.DAL
             var configurationBuilder = new ConfigurationBuilder();
             configurationBuilder.AddJsonFile("appsettings.json");
             var configuration = configurationBuilder.Build();
-            var sqlConfig = configuration.GetValue<SqlServerConfig>("sqlConfig");
+
+            var section = configuration.GetSection("sqlConfig");
+            var sqlConfig = new SqlServerConfig();
+            section.Bind(sqlConfig);
 
             return sqlConfig;
         }

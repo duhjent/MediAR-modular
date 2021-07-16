@@ -8,6 +8,6 @@ namespace MediAR.Modules.Membership.Core.Entities
         public Guid ApplicationUserId { get; set; }
 
         public Role Role { get; set; }
-        public string RoleId { get; set; }
+        public Guid RoleId { get; set; }
     }
 }

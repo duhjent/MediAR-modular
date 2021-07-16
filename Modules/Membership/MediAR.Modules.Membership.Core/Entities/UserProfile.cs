@@ -8,8 +8,6 @@ namespace MediAR.Modules.Membership.Core.Entities
         
         public ApplicationUser ApplicationUser { get; set; }
 
-        public string TenantId { get; set; }
-
         // comment out for now, need to think about module segregation
         // public IList<UserCourse> Courses { get; set; }
         // public int GroupId { get; set; }

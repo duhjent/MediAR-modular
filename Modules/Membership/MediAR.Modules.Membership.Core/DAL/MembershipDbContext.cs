@@ -16,5 +16,11 @@ namespace MediAR.Modules.Membership.Core.DAL
         public DbSet<Role> Roles { get; set; }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+        }
+
     }
 }
