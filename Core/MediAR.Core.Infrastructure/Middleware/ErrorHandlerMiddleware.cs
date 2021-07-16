@@ -14,7 +14,6 @@ namespace MediAR.Core.Infrastructure.Middleware
 {
     internal class ErrorHandlerMiddleware : IMiddleware
     {
-        private readonly ConcurrentDictionary<Type, string> _codes = new();
         private readonly ILogger<ErrorHandlerMiddleware> _logger;
         private readonly IWebHostEnvironment _environment;
 

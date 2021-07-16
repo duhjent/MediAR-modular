@@ -10,8 +10,6 @@ namespace MediAR.Modules.Membership.Core.Dtos
 
         public string Password { get; set; }
 
-        public Guid TenantId { get; set; }
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

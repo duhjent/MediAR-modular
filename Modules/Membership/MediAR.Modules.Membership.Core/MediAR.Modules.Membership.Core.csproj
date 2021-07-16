@@ -5,10 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Exceptions" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\..\..\Core\MediAR.Core.Contracts\MediAR.Core.Contracts.csproj" />
       <ProjectReference Include="..\..\..\Core\MediAR.Core.Infrastructure\MediAR.Core.Infrastructure.csproj" />
     </ItemGroup>

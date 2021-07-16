@@ -6,17 +6,18 @@ using System.Security.Claims;
 using System.Text;
 using MediAR.Modules.Membership.Core.Configurations;
 using MediAR.Modules.Membership.Core.Contracts;
+using MediAR.Modules.Membership.Core.Dtos;
 using MediAR.Modules.Membership.Core.Entities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace MediAR.Modules.Membership.Core.Services
 {
-    public class AuthTokenProvider: ITokenProvider
+    public class AuthTokenProvider : ITokenProvider
     {
-        private readonly IOptions<TokenConfiguration> _config;
+        private readonly TokenConfiguration _config;
 
-        public AuthTokenProvider(IOptions<TokenConfiguration> config)
+        public AuthTokenProvider(TokenConfiguration config)
         {
             _config = config;
         }
@@ -24,16 +25,21 @@ namespace MediAR.Modules.Membership.Core.Services
         public string GenerateToken(ApplicationUser user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(_config.Value.JwtSecret);
-            var claims = new List<Claim> { new(JwtRegisteredClaimNames.Sub, user.Id.ToString()) };
-            var roles = user.Roles.Select(aur => aur.Role.Name).ToList();
-            roles.ForEach(x => claims.Add(new Claim(ClaimTypes.Role, x)));
+            var key = Encoding.UTF8.GetBytes(_config.JwtSecret);
+            var claims = new List<Claim> {new(JwtRegisteredClaimNames.Sub, user.Id.ToString())};
+
+            if (user.Roles is not null)
+            {
+                var roles = user.Roles.Select(aur => aur.Role.Name).ToList();
+                roles.ForEach(x => claims.Add(new Claim(ClaimTypes.Role, x)));
+            }
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddMinutes(_config.Value.ClaimsTokenExpMinutes),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
+                Expires = DateTime.UtcNow.AddMinutes(_config.ClaimsTokenExpMinutes),
+                SigningCredentials =
+                    new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
