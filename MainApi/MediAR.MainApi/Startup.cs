@@ -2,10 +2,15 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using MediAR.Core.Infrastructure;
 using MediAR.Core.Infrastructure.Api;
+using MediAR.Core.Infrastructure.DAL;
 using MediAR.Core.Infrastructure.Middleware;
+using MediAR.Modules.Membership.Api;
+using MediAR.Modules.Membership.Core.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,11 +34,16 @@ namespace MediAR.MainApi
             {
                 setupAction.FeatureProviders.Add(new InternalControllerFeatureProvider());
             });
+
+            var options = Configuration.GetValue<SqlServerConfig>("sqlConfig");
+
+            services.AddDbContext<MembershipDbContext>(x => x.UseSqlServer(options.ConnectionString));
         }
         
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterModule(new InfrastructureModule());
+            builder.RegisterModule(new MembershipModule());
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

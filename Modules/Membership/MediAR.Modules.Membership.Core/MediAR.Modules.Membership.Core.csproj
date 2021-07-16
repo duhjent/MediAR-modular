@@ -10,10 +10,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Core\MediAR.Core.Contracts\MediAR.Core.Contracts.csproj" />
+      <ProjectReference Include="..\..\..\Core\MediAR.Core.Infrastructure\MediAR.Core.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
       <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
     </ItemGroup>

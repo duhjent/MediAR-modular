@@ -1,4 +1,8 @@
 using Autofac;
+using MediAR.Core.Infrastructure.DAL;
+using MediAR.Modules.Membership.Core.DAL;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace MediAR.Modules.Membership.Api
 {
@@ -6,10 +10,11 @@ namespace MediAR.Modules.Membership.Api
     {
         protected override void Load(ContainerBuilder builder)
         {
-            var assembly = GetType().Assembly;
+            var sqlConfig = SqlServerConfigFactory.GetConfig();
 
-            // builder.RegisterAssemblyTypes(assembly)
-            //     .
+            builder.RegisterType<MembershipDbContext>()
+                .WithParameter("options",
+                    new DbContextOptionsBuilder<MembershipDbContext>().UseSqlServer(sqlConfig.ConnectionString));
         }
     }
 }
