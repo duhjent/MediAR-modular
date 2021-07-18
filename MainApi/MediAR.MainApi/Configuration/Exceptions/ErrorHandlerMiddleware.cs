@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Concurrent;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using MediAR.Core.Contracts.Dtos;
 using MediAR.Core.Contracts.Exceptions;
@@ -9,8 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-[assembly:InternalsVisibleTo("MediAR.MainApi")]
-namespace MediAR.Core.Infrastructure.Middleware
+namespace MediAR.MainApi.Configuration.Exceptions
 {
     internal class ErrorHandlerMiddleware : IMiddleware
     {

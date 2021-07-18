@@ -14,7 +14,7 @@ namespace MediAR.Modules.Membership.Api.Controllers
             _authService = authService;
         }
 
-        public async Task<ActionResult<AuthenticationResult>> Authenticate(AuthenticationDto model) =>
+        public async Task<ActionResult<AuthenticationResult>> Authenticate(AuthenticationRequestModel model) =>
             await _authService.AuthenticateAsync(model);
     }
 }

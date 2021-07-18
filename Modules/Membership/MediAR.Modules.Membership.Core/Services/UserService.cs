@@ -29,9 +29,9 @@ namespace MediAR.Modules.Membership.Core.Services
         public async Task<ApplicationUser> GetByEmailAsync(string email) =>
             await _repo.GetFirstAsync(x => x.Email == email);
 
-
         public async Task<IReadOnlyList<ApplicationUser>> GetAllAsync() => await _repo.GetAllAsync();
-        public async Task<RegistrationResult> RegisterAsync(UserRegistrationDto model)
+
+        public async Task<RegistrationResult> RegisterAsync(UserRegistrationRequestModel model)
         {
             var userWithSameName = await GetByNameAsync(model.UserName);
             if (userWithSameName is not null)
@@ -44,11 +44,12 @@ namespace MediAR.Modules.Membership.Core.Services
             {
                 return new RegistrationResult(new[] {"Email is taken"});
             }
-            
+
             var user = new ApplicationUser
             {
                 UserName = model.UserName,
                 Email = model.Email,
+                // TODO: fix when #tenantManagement is ready
                 TenantId = Guid.NewGuid(),
                 FirstName = model.FirstName,
                 LastName = model.LastName,

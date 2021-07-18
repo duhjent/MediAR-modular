@@ -17,7 +17,7 @@ namespace MediAR.Modules.Membership.Core.Services
             _tokenProvider = tokenProvider;
         }
         
-        public async Task<AuthenticationResult> AuthenticateAsync(AuthenticationDto authModel)
+        public async Task<AuthenticationResult> AuthenticateAsync(AuthenticationRequestModel authModel)
         {
             var user = await _userService.GetByNameAsync(authModel.UserName);
             if (user is null)

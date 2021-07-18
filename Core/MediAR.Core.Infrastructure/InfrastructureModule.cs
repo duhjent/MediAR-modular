@@ -1,5 +1,4 @@
 using Autofac;
-using MediAR.Core.Infrastructure.Middleware;
 
 namespace MediAR.Core.Infrastructure
 {
@@ -7,8 +6,6 @@ namespace MediAR.Core.Infrastructure
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<ErrorHandlerMiddleware>()
-                .SingleInstance();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace MediAR.Modules.Membership.Core.Contracts
         Task<ApplicationUser> GetByNameAsync(string userName);
         Task<ApplicationUser> GetByEmailAsync(string email);
         Task<IReadOnlyList<ApplicationUser>> GetAllAsync();
-        Task<RegistrationResult> RegisterAsync(UserRegistrationDto model);
+        Task<RegistrationResult> RegisterAsync(UserRegistrationRequestModel model);
         Task<ApplicationUser> UpdateAsync(ApplicationUser user);
         Task DeleteAsync(ApplicationUser user);
         Task DeleteAsync(Guid id);

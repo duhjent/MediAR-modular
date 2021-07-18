@@ -22,7 +22,7 @@ namespace MediAR.Modules.Membership.Api.Controllers
             await Task.FromResult(Ok(new {Message = "Hello from membership api"}));
 
         [HttpPost("register")]
-        public async Task<ActionResult<RegistrationResult>> Register(UserRegistrationDto model) =>
+        public async Task<ActionResult<RegistrationResult>> Register(UserRegistrationRequestModel model) =>
             await _service.RegisterAsync(model);
     }
 }

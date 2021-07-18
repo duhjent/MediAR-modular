@@ -5,6 +5,6 @@ namespace MediAR.Modules.Membership.Core.Contracts
 {
     public interface IAuthService
     {
-        Task<AuthenticationResult> AuthenticateAsync(AuthenticationDto authModel);
+        Task<AuthenticationResult> AuthenticateAsync(AuthenticationRequestModel authModel);
     }
 }

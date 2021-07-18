@@ -2,7 +2,7 @@ using System;
 
 namespace MediAR.Modules.Membership.Core.Dtos
 {
-    public class UserRegistrationDto
+    public class UserRegistrationRequestModel
     {
         public string UserName { get; set; }
 

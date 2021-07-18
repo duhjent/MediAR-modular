@@ -1,11 +1,9 @@
 using System;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 
-[assembly:InternalsVisibleTo("MediAR.MainApi")]
-namespace MediAR.Core.Infrastructure.Api
+namespace MediAR.MainApi.Configuration
 {
     internal class InternalControllerFeatureProvider : ControllerFeatureProvider
     {

@@ -6,9 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using MediAR.Modules.Membership.Core.Configurations;
 using MediAR.Modules.Membership.Core.Contracts;
-using MediAR.Modules.Membership.Core.Dtos;
 using MediAR.Modules.Membership.Core.Entities;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace MediAR.Modules.Membership.Core.Services
@@ -39,7 +37,9 @@ namespace MediAR.Modules.Membership.Core.Services
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddMinutes(_config.ClaimsTokenExpMinutes),
                 SigningCredentials =
-                    new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
+                    new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256),
+                Audience = _config.JwtAudience,
+                Issuer = _config.JwtIssuer
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
