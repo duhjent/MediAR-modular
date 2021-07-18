@@ -15,6 +15,7 @@ namespace MediAR.Modules.Membership.Core.Contracts
         Task<RegistrationResult> RegisterAsync(UserRegistrationRequestModel model);
         Task<ApplicationUser> UpdateAsync(ApplicationUser user);
         Task DeleteAsync(ApplicationUser user);
-        Task DeleteAsync(Guid id);
+        Task<string> GeneratePasswordResetTokenAsync(Guid userId);
+        Task<PasswordResetResult> ResetPasswordAsync(string userName, string token, string newPassword);
     }
 }

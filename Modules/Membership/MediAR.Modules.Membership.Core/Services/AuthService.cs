@@ -4,17 +4,17 @@ using MediAR.Modules.Membership.Core.Dtos;
 
 namespace MediAR.Modules.Membership.Core.Services
 {
-    public class AuthService : IAuthService
+    internal class AuthService : IAuthService
     {
         private readonly IUserService _userService;
         private readonly IPasswordHasher _passwordHasher;
-        private readonly ITokenProvider _tokenProvider;
+        private readonly IAuthTokenProvider _authTokenProvider;
 
-        public AuthService(IUserService userService, IPasswordHasher passwordHasher, ITokenProvider tokenProvider)
+        public AuthService(IUserService userService, IPasswordHasher passwordHasher, IAuthTokenProvider authTokenProvider)
         {
             _userService = userService;
             _passwordHasher = passwordHasher;
-            _tokenProvider = tokenProvider;
+            _authTokenProvider = authTokenProvider;
         }
         
         public async Task<AuthenticationResult> AuthenticateAsync(AuthenticationRequestModel authModel)
@@ -29,7 +29,7 @@ namespace MediAR.Modules.Membership.Core.Services
             
             if (isPassCorrect)
             {
-                var token = _tokenProvider.GenerateToken(user);
+                var token = _authTokenProvider.GenerateToken(user);
                 return new AuthenticationResult(token);
             }
 

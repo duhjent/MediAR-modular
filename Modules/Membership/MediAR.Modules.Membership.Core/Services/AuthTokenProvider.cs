@@ -11,7 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace MediAR.Modules.Membership.Core.Services
 {
-    public class AuthTokenProvider : ITokenProvider
+    internal class AuthTokenProvider : IAuthTokenProvider
     {
         private readonly TokenConfiguration _config;
 

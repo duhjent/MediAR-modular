@@ -5,7 +5,7 @@ using MediAR.Modules.Membership.Core.Contracts;
 
 namespace MediAR.Modules.Membership.Core.Services
 {
-    public class PasswordHasher : IPasswordHasher
+    internal class PasswordHasher : IPasswordHasher
     {
         public string Encode(string password)
         {

@@ -6,7 +6,7 @@ using MediAR.Modules.Membership.Core.Entities;
 
 namespace MediAR.Modules.Membership.Core.Services
 {
-    public class RoleService : IRoleService
+    internal class RoleService : IRoleService
     {
         private readonly IRoleRepository _repo;
 
@@ -25,6 +25,12 @@ namespace MediAR.Modules.Membership.Core.Services
 
         public async Task<Role> CreateRoleWithName(string roleName)
         {
+            var roleWithName = await _repo.GetFirstAsync(x => x.Name == roleName);
+            if (roleWithName is not null)
+            {
+                return roleWithName;
+            }
+            
             var role = new Role
             {
                 Name = roleName

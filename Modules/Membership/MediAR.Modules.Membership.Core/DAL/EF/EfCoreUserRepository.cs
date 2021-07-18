@@ -57,5 +57,19 @@ namespace MediAR.Modules.Membership.Core.DAL.EF
             _ctx.ApplicationUsers.Remove(user);
             await _ctx.SaveChangesAsync();
         }
+
+        public async Task<UserToken> AddTokenAsync(UserToken token)
+        {
+            await _ctx.UserTokens.AddAsync(token);
+            await _ctx.SaveChangesAsync();
+            return token;
+        }
+
+        public async Task<IReadOnlyList<UserToken>> GetTokensForUserAsync(Guid userId)
+        {
+            var tokens = await _ctx.UserTokens.AsQueryable().Where(x => x.UserId == userId).ToListAsync();
+
+            return tokens;
+        }
     }
 }

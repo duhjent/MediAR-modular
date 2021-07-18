@@ -12,7 +12,7 @@ namespace MediAR.Modules.Membership.Core.Services
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<AuthTokenProvider>()
-                .As<ITokenProvider>()
+                .As<IAuthTokenProvider>()
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<UserService>()
@@ -25,6 +25,10 @@ namespace MediAR.Modules.Membership.Core.Services
 
             builder.RegisterType<RoleService>()
                 .As<IRoleService>()
+                .InstancePerLifetimeScope();
+            
+            builder.RegisterType<TokenProvider>()
+                .As<ITokenProvider>()
                 .InstancePerLifetimeScope();
         }
     }

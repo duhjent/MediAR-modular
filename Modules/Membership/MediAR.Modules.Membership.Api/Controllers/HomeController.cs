@@ -38,6 +38,12 @@ namespace MediAR.Modules.Membership.Api.Controllers
         {
             await _ctx.Database.MigrateAsync();
 
+            var existingAdmin = await _userService.GetByNameAsync(_adminConfig.DefaultUserName);
+            if (existingAdmin is not null)
+            {
+                return Ok();
+            }
+
             var adminRole = await _roleService.CreateRoleWithName(_adminConfig.DefaultRoleName);
             var registrationModel = new UserRegistrationRequestModel
             {

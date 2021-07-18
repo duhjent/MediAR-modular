@@ -15,5 +15,7 @@ namespace MediAR.Modules.Membership.Core.Contracts
         Task<ApplicationUser> GetByIdAsync(Guid id);
         Task<ApplicationUser> UpdateAsync(ApplicationUser user);
         Task DeleteAsync(ApplicationUser user);
+        Task<UserToken> AddTokenAsync(UserToken token);
+        Task<IReadOnlyList<UserToken>> GetTokensForUserAsync(Guid userId);
     }
 }

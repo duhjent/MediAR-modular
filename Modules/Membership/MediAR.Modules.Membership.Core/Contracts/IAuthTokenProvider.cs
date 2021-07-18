@@ -2,8 +2,8 @@ using MediAR.Modules.Membership.Core.Entities;
 
 namespace MediAR.Modules.Membership.Core.Contracts
 {
-    public interface ITokenProvider
+    public interface IAuthTokenProvider
     {
-        string GenerateToken(string purpose, ApplicationUser user);
+        string GenerateToken(ApplicationUser user);
     }
 }

@@ -1,24 +1,34 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using MediAR.Core.Contracts.Exceptions;
+using MediAR.Modules.Membership.Core.Configurations;
 using MediAR.Modules.Membership.Core.Contracts;
 using MediAR.Modules.Membership.Core.Dtos;
 using MediAR.Modules.Membership.Core.Entities;
 
 namespace MediAR.Modules.Membership.Core.Services
 {
-    public class UserService : IUserService
+    internal class UserService : IUserService
     {
         private readonly IUserRepository _repo;
         private readonly IPasswordHasher _hasher;
+        private readonly IAuthTokenProvider _authTokenProvider;
         private readonly ITokenProvider _tokenProvider;
+        private readonly TokenConfiguration _tokenConfig;
 
-        public UserService(IUserRepository repo, IPasswordHasher hasher, ITokenProvider tokenProvider)
+        public UserService(IUserRepository repo,
+            IPasswordHasher hasher,
+            IAuthTokenProvider authTokenProvider,
+            ITokenProvider tokenProvider, 
+            TokenConfiguration tokenConfig)
         {
             _repo = repo;
             _hasher = hasher;
+            _authTokenProvider = authTokenProvider;
             _tokenProvider = tokenProvider;
+            _tokenConfig = tokenConfig;
         }
 
         public async Task<ApplicationUser> GetByIdAsync(Guid id) => await _repo.GetByIdAsync(id);
@@ -58,22 +68,46 @@ namespace MediAR.Modules.Membership.Core.Services
 
             var registeredUser = await _repo.AddAsync(user);
 
-            return new RegistrationResult(_tokenProvider.GenerateToken(registeredUser));
+            return new RegistrationResult(_authTokenProvider.GenerateToken(registeredUser));
         }
 
         public async Task<ApplicationUser> UpdateAsync(ApplicationUser user) => await _repo.UpdateAsync(user);
 
         public async Task DeleteAsync(ApplicationUser user) => await _repo.DeleteAsync(user);
 
-        public async Task DeleteAsync(Guid id)
+        public async Task<string> GeneratePasswordResetTokenAsync(Guid userId)
         {
-            var user = await GetByIdAsync(id);
-            if (user is null)
+            var user = await GetByIdAsync(userId);
+            var tokenString = _tokenProvider.GenerateToken("changePassword", user);
+            var userToken = new UserToken
             {
-                throw new BaseNotFoundException<ApplicationUser>();
+                Token = tokenString,
+                UserId = user.Id,
+                ExpTime = DateTimeOffset.Now.Add(new TimeSpan(_tokenConfig.MembershipTokenExpDays, 0, 0, 0))
+            };
+            await _repo.AddTokenAsync(userToken);
+            return tokenString;
+        }
+
+        public async Task<PasswordResetResult> ResetPasswordAsync(string userName, string token, string newPassword)
+        {
+            var user = await GetByNameAsync(userName);
+            var userTokens = await _repo.GetTokensForUserAsync(user.Id);
+            var foundToken = userTokens.FirstOrDefault(x => x.Token == token);
+            if (foundToken is null)
+            {
+                return new PasswordResetResult(new string[] {"Token not found"});
             }
 
-            await DeleteAsync(user);
+            if (foundToken.ExpTime < DateTimeOffset.Now)
+            {
+                return new PasswordResetResult(new string[] {"Token has expired"});
+            }
+            
+            user.PasswordHash = _hasher.Encode(newPassword);
+            await _repo.UpdateAsync(user);
+
+            return new PasswordResetResult();
         }
     }
 }
